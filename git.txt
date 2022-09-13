@@ -1,0 +1,19 @@
+Download the git base from the offical git site.
+1. open git base > set path
+2. To create directory > git mkdir <name> 
+3. Initate the directory > git init
+4. To create file in the directory > touch <name.txt>
+5. To write something in the file > notepad <name.txt>
+6. To check the status > git status
+7. If the file is in red text  > git add .
+8. To commit the file > git commit -m " something"
+9. To craete branch > git branch <name>
+10. To switch the branch > git checkout <branch name>
+ Connecting to github server
+1. First create a github account
+2. create a repository with the same name as you created in the local system
+3. create done
+4. You will see https and ssh key
+5. To connect the local system to servere > git remote add origin < https link>
+6. To check whether the connectuon is estabished > git remote -v
+7. To push the branvh into the server > git push -u origiin <branch>
