@@ -1,0 +1,16 @@
+............Jenkins...............
+
+1. first install jenkins and install
+2. before installing check the jdk path and version (11 or 17)
+3. select the port
+4. done
+5 now go to google and open with localhost port 
+6. create user
+7. go to manage jenkins
+8. go to manage jenkins > global tool configuration > add jdk
+9. go to manage pugins > add git to connect the github server
+now create job and assign roles
+10. go to manage jenkins > manage plugins > add assign & role plugins 
+11. next goto manage jenkins > manage and assign roles > mange roles & assign roes
+now create user credientias
+12. go to manage jenkins > manage users > create user
