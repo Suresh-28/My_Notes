@@ -1,0 +1,9 @@
+To use the angular Download the VSCode
+To run the anguar in the vscode  
+1. open terminal
+2. To install anguar > npm install angular/cli@latest
+3.To install  jquery > npm install jquery
+4.To create project > ng new <project name>
+Four files created
+5. To run the server > ng serve
+6. To see the output > goto google type> localhost:8080  
