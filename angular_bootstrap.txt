@@ -1,0 +1,55 @@
+.................Angular Bootstrap................
+ First download the Vscode
+1. Open terminal 
+2. To install angular > npm install angular/cli@latest
+3. To install jquery > npm install jquery
+4. To install bootstrap > npm install bootstrap
+Next create a new project
+1.Open terminal 
+2. TO create new project > ng new <name>
+(This will craete 4 files)
+3.Now check the output by run the host > ng serve
+(Goto google and enter localhost:8080)
+
+>NOw goto google and search bootstrap templates.
+>Choose one of the template.
+>Right click and select view frame source.
+> You see a main.css file open file and copy  code.
+> copy the code from body to footer.
+
+There are two ways to do angular bootstrap project
+Now come back to Vscode
+
+.....Way-1.......
+
+>Goto style.css and paste the code ( copied from main.css)
+>Next open component.app.html 
+>Remove the existing code and paste the code ( copied from body to fo0ter).
+ Now time to create components( create as per the view frame source code suggests)
+>To create a component > ng g c <component name>
+> After creating component 
+> Cut the code from the app.component.html and paste in the app.<component name>.htm (cut and paste ony one frame ).
+> Do this same for remaining components
+ And next most important thing is to copy the header files and script files from source.
+>Paste it in the index.html ( scripts in body and styles in head)
+And goto bootstrap documentation on googe and copy the head and script code. Paste it in the index.html file.
+Now run the localhost > ng serve
+
+
+.....Way-2.......
+
+>Goto style.css and paste the code ( copied from main.css)
+>Next open component.app.html 
+>Remove the existing code and paste the code ( copied from body to fo0ter).
+ Now time to create components( create as per the view frame source code suggests)
+>To create a component > ng g c <component name>
+> After creating component 
+> Cut the code from the app.component.html and paste in the app.<component name>.htm (cut and paste ony one frame ).
+> Do this same for remaining components
+ And next most important thing is to copy the header files and script files from source.
+>Paste it in the index.html ( scripts in body and styles in head)
+Now goto nodes_vscode 
+>Search the bootstrap > open > open dist > open css > copey bootsrap.min.bundle.css(relative path)(paste it in > open json file > styes[(paste)])
+>Search the bootstrap > open > open dist > open js > copy bootstrap.min.js(reative path)
+(paste it in > open json file > scripts[(paste)])
+> Search jquery > copy jquery.min.js(realative path) (paste it in json file > scripts[,(paste)].
