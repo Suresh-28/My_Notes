@@ -1,0 +1,54 @@
+First install monogd 
+second run the server 
+third open shell command
+1.To create database -> use <database name>
+1.1. To drop the database -> db.
+2. To create collecton -> db.createCollection(<"name">)
+3. To drop the collection-> db.<name>.drop()
+4. To view collections -> show collections
+5.TO view dbs -> show dbs
+6.To delete db -> db.deopDatabase()
+7.To insert a single document into collection -> db.<collectionname>.insertOne({....})
+8.To insert more than one document -> db.<collectionname>.insert([{},{}])
+9.To insert multiple documents -> db.<collectionname>.insertMany([{},{},{}])
+10.To import the json file-> monoimport --db <name> --collection <collection>
+--file <name.json> --jsonArray
+10.1. To import the csv file -> mongoimport --db <name> --collection <collection> --type csv --file <name.csv> --fields _id,...
+11.To find the data from collection -> db.<collection>.findOne()
+returns the first data of collection
+11.1. To find the specific data from collection -> db.<collection>.findOne({})
+11.2.To view te whole data of collection -> db.<collection>.find() 
+returns the data of collection
+11.3. To find the query of data->
+db.employees.find({salary: {$gt: 7000, $lt: 8000}})
+12.The find() method returns a cursor object which can be used to iterate the result. var cur=db.Employee.find(), cur.next() returnd next data
+count/forEach/hasNext/isExhausted/itcount/limit/map/max/min/pretty/skip/sort/toArray
+13.To sort ->db.collection.find().sort()  returns order based on firstname
+13.1.To sort using  specific key-> db.collection.find().sort({firstname: 1})
+return sort based on firstname
+14. To update the collection -> db.collection.updateOne({_id:1},{$set: {firstname:"suri"})
+14.1 To inset new key value ->db.colle.updateOne({_id:1},{email:"aaa"})
+currentdate/inc/min/max/mul/ewname/set/setOnInsert/unset
+14.2 To update many ->db.collection.updateMany({}<{}<{})
+14.3.If you specify an empty filter criteria {}, then it will update all the documents. db.collection.updateMany({},{ghhhh})
+15.To update Array->db.collection.updateMany(
+{skills:"marketing"},
+{$set: {"skills.$": "public speaking"})
+15.1.To add new element to array ->db.collection.updateMany(
+{},
+{$push:{"skills": "sports"}})
+15.2.To specificy mul elemwnts that need to added in arrays
+db.Employee.updateMany(
+{},
+{$push:{"skills":"{$each:["sports","acting"]}}})
+15.3.To add if it does not exist db.collection.updateMany({},"$assToSet:{"skills":"gst"}})
+15.4.To remove first and last element->db.collection.updateMany({},{$pop:{"skills":1/-1})
+15.To delete document-> db.collection.deleteOne({_id:1})
+15.1.To delete specific document -> db.collection.deleteOne({salary:{$lt:7000}})
+16.Embedded->
+var addrId = db.employee.findOne({firstName:'John'}).address;
+db.address.findOne({_id:addrId});
+17.aggregate->
+db.employee.aggregate([{$lookup:{from:'address',localField:'address',foreignField:"_id",as:'addr'}}])
+
+
