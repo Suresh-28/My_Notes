@@ -1,5 +1,6 @@
 .................Angular Bootstrap................
- First download the Vscode
+ First download the Vscode and nodejs(set environmental path of nodejs and %AppData%/npm)
+ next install npm , angular language service and C#)
 1. Open terminal 
 2. To install angular > npm install angular/cli@latest
 3. To install jquery > npm install jquery
