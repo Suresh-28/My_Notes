@@ -1,0 +1,64 @@
+SERVLET-1
+
+Servlet:
+Servlet is a java program that can perform dynamic operations send to web server.The web server sends this response to web client.
+
+Web Container:
+a web container is built on the top of thye java EE platfrom and it implements the servlet API and the service request to process https requests.
+
+Servlet APIS:
+Containd number of classes & interfaces
+1.java.servlet*.;
+2.java.servlet.http*.;
+
+Servlet Methods:
+1.Init
+2.Service
+3.Destory
+4.getServletInfo()
+5.getServletConfig()
+
+Collaboratory Servlets:
+cs is passing the common information that is to be shared directly by one servlet to another servlet of html or jsp through various invocations of the methods.
+
+Servlet Abstract Classes:
+1.Generic Servlet
+-independent of protocols
+-doesn't provide service methos
+-implement servlet interface
+2HttpsServlet 
+It provides an abstract class to be sub-class to create an http sevlet suitable for a website
+
+Configue and  Deploy Servlet:
+
+To Import TomCat Server:
+
+1.Download the tomcatr and eclipse
+2.To import the tomcat - goo the eclipse
+3.Select window -show view -servers
+4.In the servers terminal click link and add tomcat folders
+5.Then right click the link to start the server
+
+To Create a Servlet Web App:
+
+1.Right click src folder and create package
+2.Right click package And create servlet (include service ,doget,dopost methods)
+
+To View The Servlet LifeCycle:
+PrintWriter pw=response.getWriter();
+pw.print("hello");
+
+To Get Parameter From Input:
+String str=request.getParameter("fname");
+pw.print("Hello"+str);
+
+6.Create index.html in webcontent folder
+
+Code:
+<form action="myservlet" method="get">
+<input type="text" name="fname">
+<input type="submit" value="click here"></form>
+<br><br>
+<form action="myservlet" method="post">
+<input type="text" name="fname">
+<input type="submit" value="click here"></form>
