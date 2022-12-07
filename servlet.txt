@@ -62,3 +62,22 @@ Code:
 <form action="myservlet" method="post">
 <input type="text" name="fname">
 <input type="submit" value="click here"></form>
+
+To Deploy ServletConfig ServletContext:
+
+1.First create a Dynamic web project
+2.Next create a package in java folder
+3.Create two servlets named as "servlet1", "servlet2"(select only sevice method)
+code:
+ServletConfig config=getServletConfig();
+PrintWriter pw=response.getWriter();
+pw.print("sql="+config.getInitParametre("sql");
+
+Before this open web.xml
+code:
+<init-param>
+<param-name>sql</param-name>
+<param-value>select* from student></param-value>
+<init-param>
+Above code Can Access Only "SERVLET1"
+ 

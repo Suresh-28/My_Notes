@@ -1,0 +1,28 @@
+Oracle Application Express
+
+First create an account in apex.oracle.com
+
+
+Create An Application
+
+step1: Navigate to App Builder
+step2: Choose create option 
+step3: Choose which type of application(new app, form a file, starter App)
+step4: enter a application name
+step5: home page will be added by default
+step6: add new page (as your wish that which type of pages you need)
+
+Application Interface:
+
+Home: where you will see the pages you created.
+Dashboard: where data converts and shows into the chart formats.
+Employee data report: where data has display
+Employee Data Search: where you can sort the data.
+calender: where the dates  are marked by using data.
+
+Botton panel:
+App: where you can edit&create the pages .
+Session: Shows the session info.
+Debug: debug the App
+QuickEdit: where you can edit the everything shows on the data.
+customize: where you can edit logo and theme.
