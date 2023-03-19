@@ -1,0 +1,227 @@
+----------------------
+Requirements:
+-----------------------
+python @latest version
+Django @latest version
+Jinga @latest version
+Vscode @latest version
+------------------------------
+
+Create a django view project:
+----------------------------------------------
+1.First open cmd or treminal in vscode.
+2.create a folder using / mkdir <foldername>
+3.install virtual environment / pip install virtualenv
+4.create virtual env / virtualenv <foldername>
+5.navigate to env folder cd <foldername>
+6.navigate to scripts / cd scripts
+7.activate virtualenv / activate
+8.come back to virtual folder / cd ..
+9.next install django / pip install django
+10.create a django project / django-admin startproject <name>
+11. navigate to project / cd <name>
+12.create an app / django-admin startapp <name>
+13.Now check the output / python manage.py runserver
+----------------------------------------------------------------------
+
+Create a hello world django project:
+------------------------------------------------
+1.Follow above first 12 steps as it is.
+2.Open a view.py in app
+----------------------------------------
+   from django.http import HttpResponse
+   def hello(request):
+         return HttpResponsse("Hello world")
+-----------------------------------------------------
+3. create a urls.py in app
+-------------------------------------------
+   from django.urls import path
+   from . import views
+   urlpattersns=[
+            path('hello/' , viewa.hello, name='hello'),
+       ]
+-----------------------------------------
+4.open urls.py in project folder
+----------------------------------------------
+   from django.contrib import admin
+   from django.urls import include, path
+   urlpattern=[
+            path(' ', include('<appname>.urls')),
+            path('admin/', admin.site.urls),
+          ]
+-----------------------------------------------------
+5.Now run the server / python manage.py runserver
+6. successfully done!
+---------------------------------------------
+
+Create a Django Project with Templates:
+----------------------------------------------------
+1.Follow above six steps
+2.Create a folder name "templates"
+3.create a html file named as myfirst.html
+------------------------------------------------
+  <html>
+  <body>
+  <h1>Welcome to django project</h1>
+   </body>
+  </html>
+----------------------------------------------
+4. Modify views.py 
+-------------------------------------------------------
+    def hello(request):
+          return render(request,"myfirst.html")
+---------------------------------------------------------
+5.Change setting
+   1. Add app name in INSTALLED APPS / "<appname>"
+   2. import os and add path in DIR/ os.path.join(DIR, "templates")
+6. Run the server / python manage.py runserver
+----------------------------------------------------------------------------
+
+Create a full static website using django:
+--------------------------------------------------
+1.First choose a web template and download it.
+2.create an app/python manage.py startapp <appname>
+3.do as follow above steps
+4. copy and paste index html file in templates
+5.create a static folder in the project and copy paste the assests folder from downloded code
+6.next goto setting 
+--------------------------------------------------------------------------
+     STATIC_DIRS=[ os.path.join(BASE_DIR, 'static']
+     STATIC_ROOT= os.path.join(BASE_DIR, 'assets')
+----------------------------------------------------------------------------
+7. To collect static files /python manage.py collectstatic
+8.do static every tag in html page / "{% static "link" %} and add {% load static %} at the top.
+9.Runserver / python manage.py runserver
+-----------------------------------------------------------
+
+Create a full dynamic website using django:
+---------------------------------------------------------------
+1.do follow above steps
+2.open models.py
+----------------------------------
+  class Destination:
+      id : int
+      name : str
+      img : str
+      desc : str
+      price : int
+-------------------------------
+3.open views.py
+-----------------------------------------------------
+    from . modesls import Destination
+    def index(request):
+          dest1=Destination()
+          dest1.name="Mumbai"
+          dest1.desc="the city of market" 
+          dest2=Destination()
+          dest2.name="Mumbai"
+          dest2.desc="the city of market" 
+          dest3=Destination()
+          dest3.name="Mumbai"
+          dest3.desc="the city of market" 
+           dests=[dest1,dest2,dest3]
+    return render(request,"index.html", {"dests"=dests})
+------------------------------------------------------------------------
+4.To make a loop of date / {% for dest in dests %} at the end of div {% endfor %}
+5. To access this data , goto html page replace the /{{dest.name}} in place of decription
+6.To access this data , goto html page replace the /{{dest.desc}} in place of decription
+7.To access the imgaes / on the top of html code /{% static "images" as baseurl %}
+8.To access img /in the tag {{baseurl}}/{{dest.img}}
+
+Download Softwares:
+-----------------------------
+9.Next download postgresql from the official site.
+10.Next download pgAdmin4 from the official site.
+11.create database named it as <whatever name>
+
+Make Migrations
+-----------------------
+12.Open settings.py - goto DATABASES:
+---------------------------------------------------------------------
+      change 'ENDINE': 'django.db.backends.postgresql',
+                 'NAME' : 'project name',
+                 'USER' : 'postgresql',
+                 'PASSWORD' : '000'(depends on what you created password while installing) ,
+                 'HOST' :'localhost',
+-------------------------------------------------------------------------------------------------------------
+13. pip install  psycopg2
+14 add code to models.py as 
+---------------------------------------------------------
+ class Destination(models.Model):
+ name= models.CharField(max_length=100)
+ img = models.ImageField(upload_to='pics')
+ desc=models.TextField()
+ price=models.IntegerField
+ offer = models.BooleanField(default=False)
+---------------------------------------------------------
+15.In the settings.py add / 'appname.app.AppnameConfig' in the INSTALLED APPS
+16.To access images install/ pip install pillow
+17.python manage.py makemigrations
+18.python manage.py migrate
+(Now goto pgadmin check that tables are created under user created database)
+
+Admin panel:
+------------------------------------------
+19.To create a super user / python manage.py createsuperuser ask: username ,email,password
+20.open in the browser localhost:8000/admin and user the credientals and login
+21.register in admin.py / admin.site.register(Destination)
+
+Add And Fetch:
+------------------------------
+22.open settings.py
+--------------------------------------------------------------
+     MEDIA_URL='/media/'
+     MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+----------------------------------------------------------------------
+23.open project urls.py
+------------------------------------------------
+  from django.conf import settings
+  from django.conf.urls.static import static
+  urlspatterns=urlspatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+------------------------------------------------------------------------------------------------------------------------
+24. views.py remove objects and add/ dests=Destination.objects.all()
+25. change image path / {{dest.img.url}}
+26. runserver
+
+User Registration:
+------------------------
+27.create a saparate app and html page and add path
+28.In html page after <form action="register" method="post"> / {% csrf_token %}
+29. open views.py
+----------------------------------------------------------------
+ from django.contrib.auth.models import User, auth
+from django.contrib import messages
+def.............
+if request.method=='POST'
+    first_name=request.POST['first_name']
+    .
+    .
+    .
+    if password==password1:
+        if User.objects.filter(username=username).exists():
+        print('user taken')
+        message.info(request,"usertaken")
+        elif User.objects.filter(username=username).exists():
+        print('user taken')
+        else:
+    user=User.oject.create_user(first_name=first_name)
+    user.save();
+    print('user created')
+    return redirect('/')
+     else:
+     print('both password should be same')
+     else:
+return render .........
+----------------------------------------------------------
+ 30. Login code:
+def login(request):
+ if request.method=='POST'
+ username=request.POST['username']
+ password=request.POST['password']
+user=auth.authenticate(username=username, password=password)
+if userbis not None:
+auth.logi(request,user)
+return redirect("/")
+else:
+message.info(request,"invalid)
+return redirect ('login;)                
